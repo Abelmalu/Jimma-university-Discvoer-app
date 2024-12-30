@@ -25,16 +25,29 @@ class MyApp extends StatelessWidget {
         )
         .copyWith(
 
-    primary: Colors.green[900], 
+    primary:  Color.fromARGB(174, 2, 3, 1),
     secondary: Colors.green[900], 
   ),
   appBarTheme: AppBarTheme(
-    backgroundColor: Theme.of(context).primaryColor,
+    backgroundColor: Color.fromARGB(174, 2, 3, 1),
+    
+
     foregroundColor: Colors.white,
+    
   )
 
       ),
       home: const HomeScreen(),
     );
+  }
+}
+
+
+class Demo extends StatelessWidget {
+  const Demo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child:Text('what the fuck'));
   }
 }
