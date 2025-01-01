@@ -34,3 +34,5 @@ List<Campus> CAMPUSES = [
       imageUrl: 'assets/images/beco.jpg',
       studentNumber: 5000),
 ];
+
+List Categories = ['campuses', 'colleges','departments','internships','Researches','SRS','News','Clubs'];

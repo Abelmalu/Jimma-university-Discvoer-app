@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ju_discover/feature/home/tabs_screen.dart';
-
 import 'feature/campuses/bloc/campus_bloc.dart';
-import 'feature/home/home_screen.dart';
+import 'feature/home/bloc/home_bloc.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => CampusBloc(),
+        ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
         ),
        
       ],
