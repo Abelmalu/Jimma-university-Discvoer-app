@@ -6,9 +6,11 @@ import 'package:ju_discover/feature/campuses/ui/campus_item.dart';
 
 import '../bloc/campus_bloc.dart';
 import '../bloc/campus_event.dart';
+import 'campus_detail.dart';
 
 class CampusScreen extends StatefulWidget {
-  const CampusScreen({super.key});
+  static String routName = '/campuses';
+  const CampusScreen();
 
   @override
   State<CampusScreen> createState() => _CampusScreenState();
@@ -42,11 +44,25 @@ class _CampusScreenState extends State<CampusScreen> {
                     );
                   }),
             );
+
           default:
             return Text('wrong');
         }
       },
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CampusNavigateToCampusDetailState) {
+          final successState = state as CampusNavigateToCampusDetailState;
+
+          Navigator.of(context).pushNamed(
+            CampusDetailScreen.routeName,
+            arguments: {'name': successState.selectedCampus},
+            
+          );
+          
+
+          BlocProvider.of<CampusBloc>(context).add(CampusInitialEvent());
+        }
+      },
     );
   }
 }

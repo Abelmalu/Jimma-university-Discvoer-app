@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ju_discover/feature/campuses/ui/campuses_screen.dart';
-import 'package:ju_discover/feature/home/home_screen.dart';
+import 'package:ju_discover/feature/home/ui/home_screen.dart';
 
-import '../cotact/ui/contact_us_screen.dart';
-import '../history/ui/history_screen.dart';
+import '../../cotact/ui/contact_us_screen.dart';
+import '../../history/ui/history_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});

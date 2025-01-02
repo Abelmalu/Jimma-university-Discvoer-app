@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ju_discover/feature/home/tabs_screen.dart';
+import 'package:ju_discover/feature/campuses/ui/campus_detail.dart';
+import 'package:ju_discover/feature/campuses/ui/campuses_screen.dart';
+import 'package:ju_discover/feature/home/ui/tabs_screen.dart';
+import 'package:ju_discover/feature/internship/ui/Internship_screen.dart';
 import 'feature/campuses/bloc/campus_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
 
@@ -55,6 +58,9 @@ class MyApp extends StatelessWidget {
         
         routes:{
           '/':(context) => TabsScreen(),
+         CampusScreen.routName:(context)=>CampusScreen(),
+         CampusDetailScreen.routeName:(context) => CampusDetailScreen(),
+         InternshipScreen.routeName:(context) => InternshipScreen(),
 
 
         }

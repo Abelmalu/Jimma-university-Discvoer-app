@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ju_discover/feature/campuses/ui/campuses_screen.dart';
+import 'package:ju_discover/feature/internship/ui/Internship_screen.dart';
 
-import 'bloc/home_bloc.dart';
+import '../bloc/home_bloc.dart';
 
 class HomeItems extends StatelessWidget {
   final String categoryName;
@@ -16,13 +17,23 @@ class HomeItems extends StatelessWidget {
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state is HomeNavigateToCategoriesDetailScreenState) {
-          final successState = state as HomeNavigateToCategoriesDetailScreenState;
+          final successState =
+              state as HomeNavigateToCategoriesDetailScreenState;
           if (successState.selectedCategory == 'campuses') {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => CampusScreen()),
-              // Remove all previous routes
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              CampusScreen.routName,
+              
                  (route) => route.isFirst,
-            );
+             );
+           
+          }
+          if (successState.selectedCategory == 'Internships') {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              InternshipScreen.routeName,
+              
+                 (route) => route.isFirst,
+             );
+           
           }
         }
       },
@@ -30,7 +41,7 @@ class HomeItems extends StatelessWidget {
         onTap: () {
           context
               .read<HomeBloc>()
-              .add(HomeCategoriesPressedEvent( categoryName));
+              .add(HomeCategoriesPressedEvent(categoryName));
         },
         child: Card(
           child: Container(
