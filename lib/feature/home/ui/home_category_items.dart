@@ -14,30 +14,7 @@ class HomeItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HomeBloc, HomeState>(
-      listener: (context, state) {
-        if (state is HomeNavigateToCategoriesDetailScreenState) {
-          final successState =
-              state as HomeNavigateToCategoriesDetailScreenState;
-          if (successState.selectedCategory == 'campuses') {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              CampusScreen.routName,
-              
-                 (route) => route.isFirst,
-             );
-           
-          }
-          if (successState.selectedCategory == 'Internships') {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              InternshipScreen.routeName,
-              
-                 (route) => route.isFirst,
-             );
-           
-          }
-        }
-      },
-      child: InkWell(
+    return  InkWell(
         onTap: () {
           context
               .read<HomeBloc>()
@@ -58,7 +35,7 @@ class HomeItems extends StatelessWidget {
             ),
           ),
         ),
-      ),
+     
     );
   }
 }

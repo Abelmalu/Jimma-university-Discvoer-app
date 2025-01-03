@@ -6,6 +6,7 @@ import 'package:ju_discover/feature/home/ui/tabs_screen.dart';
 import 'package:ju_discover/feature/internship/ui/Internship_screen.dart';
 import 'feature/campuses/bloc/campus_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
+import 'feature/internship/bloc/internship_bloc.dart';
 
 
 void main() {
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => InternshipBloc(),
         ),
        
       ],
