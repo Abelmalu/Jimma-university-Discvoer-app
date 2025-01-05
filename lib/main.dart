@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ju_discover/feature/Register/ui/register_screen.dart';
 import 'package:ju_discover/feature/campuses/ui/campus_detail.dart';
 import 'package:ju_discover/feature/campuses/ui/campuses_screen.dart';
 import 'package:ju_discover/feature/home/ui/tabs_screen.dart';
 import 'package:ju_discover/feature/internship/ui/Internship_screen.dart';
 import 'package:ju_discover/feature/login/ui/login_screen.dart';
+import 'feature/Register/bloc/register_bloc.dart';
 import 'feature/campuses/bloc/campus_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
 import 'feature/internship/bloc/internship_bloc.dart';
@@ -34,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => RegisterBloc(),
         ),
        
       ],
@@ -71,6 +76,7 @@ class MyApp extends StatelessWidget {
          CampusDetailScreen.routeName:(context) => CampusDetailScreen(),
          InternshipScreen.routeName:(context) => InternshipScreen(),
          LoginScreen.routeName:(context) => LoginScreen(),
+         RegisterScreen.routeName:(context) => RegisterScreen(),
 
 
         }

@@ -11,6 +11,7 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
     on<LoginButtonPressedEvent>(loginButtonPressedEvent);
+    on<RegisterTextButtonPressedEvent>(registerTextButtonPressed);
   }
 
   FutureOr<void> loginButtonPressedEvent(
@@ -19,13 +20,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final url = Uri.parse('http://localhost:8000/api/login');
       final response = await http.post(url,
           body: {"email": event.username, "password": event.password});
-
+      final result = jsonDecode(response.body);
       print(response.body);
-      if (response.statusCode == 200) {
-        print('hellow world');
+
+      if (result['success'] == true) {
+        emit(LoginSuccssState());
+      } else if (result['success'] == false) {
+        emit(LoginFailState());
       }
     } catch (e) {
       print('the error is $e');
     }
+  }
+
+  FutureOr<void> registerTextButtonPressed(
+      RegisterTextButtonPressedEvent event, Emitter<LoginState> emit) {
+    emit(RegisterTextButtonPressedState());
   }
 }
