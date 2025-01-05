@@ -14,3 +14,4 @@ final class InternshipLoadingSuccessState extends InternshipState {
 }
 
 final class InternshipLoadingFailureState extends InternshipState {}
+final class InternshipNavigateToLoginScreenState extends InternshipState {}

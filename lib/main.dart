@@ -4,9 +4,11 @@ import 'package:ju_discover/feature/campuses/ui/campus_detail.dart';
 import 'package:ju_discover/feature/campuses/ui/campuses_screen.dart';
 import 'package:ju_discover/feature/home/ui/tabs_screen.dart';
 import 'package:ju_discover/feature/internship/ui/Internship_screen.dart';
+import 'package:ju_discover/feature/login/ui/login_screen.dart';
 import 'feature/campuses/bloc/campus_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
 import 'feature/internship/bloc/internship_bloc.dart';
+import 'feature/login/bloc/login_bloc.dart';
 
 
 void main() {
@@ -29,6 +31,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => InternshipBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
         ),
        
       ],
@@ -65,6 +70,7 @@ class MyApp extends StatelessWidget {
          CampusScreen.routName:(context)=>CampusScreen(),
          CampusDetailScreen.routeName:(context) => CampusDetailScreen(),
          InternshipScreen.routeName:(context) => InternshipScreen(),
+         LoginScreen.routeName:(context) => LoginScreen(),
 
 
         }

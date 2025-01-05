@@ -13,6 +13,7 @@ part 'internship_event.dart';
 class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
   InternshipBloc() : super(InternshipInitialState()) {
     on<InternshipInitialEvent>(internshipInitialEvent);
+    on<InternshipNavigateToLoginEvent>(internshipNavigateToLoginEvent);
   }
 
   FutureOr<void> internshipInitialEvent(
@@ -21,7 +22,7 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
 
     try {
       final response =
-          await http.get(Uri.parse('http://192.168.1.5:8000/api/internship'));
+          await http.get(Uri.parse('http://localhost:8000/api/internship'));
 
       // print(response.body);
 
@@ -38,5 +39,10 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
     } catch (e) {
       print('the error is $e');
     }
+  }
+
+  FutureOr<void> internshipNavigateToLoginEvent(
+      InternshipNavigateToLoginEvent event, Emitter<InternshipState> emit) {
+    emit(InternshipNavigateToLoginScreenState());
   }
 }

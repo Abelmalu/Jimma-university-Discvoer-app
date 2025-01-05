@@ -5,6 +5,7 @@ sealed class InternshipEvent {}
 
 
 final class InternshipInitialEvent extends InternshipEvent{}
+final class InternshipNavigateToLoginEvent extends InternshipEvent{}
 
 
 

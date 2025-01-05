@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'package:ju_discover/feature/internship/bloc/internship_bloc.dart';
+
+import 'package:ju_discover/feature/login/ui/login_screen.dart';
 
 import '../bloc/internship_state.dart';
 
@@ -16,6 +16,7 @@ class InternshipScreen extends StatefulWidget {
 }
 
 class _InternshipScreenState extends State<InternshipScreen> {
+  @override
   initState() {
     BlocProvider.of<InternshipBloc>(context).add(InternshipInitialEvent());
     super.initState();
@@ -182,21 +183,29 @@ class _InternshipScreenState extends State<InternshipScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: successState.internships.map((internship) {
-                    return Card(child:  ListTile(
-                      leading: CircleAvatar(
-                        child: ClipOval(
-                            child: Text(
-                          '${internship.id}',
-                          
-                        )),
-                        radius: 30,
+                    return Card(
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          child: ClipOval(
+                              child: Text(
+                            '${internship.id}',
+                          )),
+                          radius: 30,
+                        ),
+                        title: Text('${internship.title}'),
+                        subtitle: Text('${internship.description}'),
+                        trailing: InkWell(
+                          onTap: () {
+                            context
+                                .read<InternshipBloc>()
+                                .add(InternshipNavigateToLoginEvent());
+                          },
+                          child: Text(
+                            'view more',
+                          ),
+                        ),
                       ),
-                      title: Text('${internship.title}'),
-                      subtitle: Text('${internship.description}'),
-                      trailing: Text(
-                        'view more',
-                      ),
-                    ),);
+                    );
                   }).toList(),
                 )
               ],
@@ -206,7 +215,14 @@ class _InternshipScreenState extends State<InternshipScreen> {
           return Text('could not load data');
         }
       },
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is InternshipNavigateToLoginScreenState) {
+          Navigator.of(context).pushNamed(
+            LoginScreen.routeName,
+          );
+          BlocProvider.of<InternshipBloc>(context).add(InternshipInitialEvent());
+        }
+      },
     );
   }
 }
