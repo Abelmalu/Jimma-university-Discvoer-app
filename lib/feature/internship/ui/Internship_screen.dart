@@ -22,6 +22,8 @@ class _InternshipScreenState extends State<InternshipScreen> {
     super.initState();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InternshipBloc, InternshipState>(
@@ -196,9 +198,9 @@ class _InternshipScreenState extends State<InternshipScreen> {
                         subtitle: Text('${internship.description}'),
                         trailing: InkWell(
                           onTap: () {
-                            context
-                                .read<InternshipBloc>()
-                                .add(InternshipNavigateToLoginEvent());
+                            context.read<InternshipBloc>().add(
+                                InternshipNavigateToLoginEvent(
+                                    internshipId: internship.id!));
                           },
                           child: Text(
                             'view more',
@@ -217,10 +219,16 @@ class _InternshipScreenState extends State<InternshipScreen> {
       },
       listener: (context, state) {
         if (state is InternshipNavigateToLoginScreenState) {
-          Navigator.of(context).pushNamed(
-            LoginScreen.routeName,
-          );
-          BlocProvider.of<InternshipBloc>(context).add(InternshipInitialEvent());
+          final navigateToLoginState = state as InternshipNavigateToLoginScreenState;
+          final internshipId = navigateToLoginState.internshipId;
+          Navigator.of(context)
+              .pushNamed(LoginScreen.routeName, arguments: internshipId).then((data){
+                 BlocProvider.of<InternshipBloc>(context)
+              .add(InternshipInitialEvent());
+
+
+              });
+         
         }
       },
     );

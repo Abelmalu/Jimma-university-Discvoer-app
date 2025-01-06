@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ju_discover/feature/internship/ui/internship_detail_screen.dart';
 
 import '../../Register/ui/register_screen.dart';
+import '../../internship/bloc/internship_bloc.dart';
 import '../../internship/ui/Internship_screen.dart';
 import '../bloc/login_bloc.dart';
 
@@ -18,16 +20,26 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final internshipId = ModalRoute.of(context)!.settings.arguments as int;
+    print('the arugment is $internshipId');
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccssState) {
-          Navigator.of(context).pushNamed(InternshipScreen.routeName);
+          //  Navigator.pop(context);
+        
+          Navigator.of(context).pushNamed(InternshipDetailScreen.routeName,
+              arguments: internshipId).then((data){
+                 BlocProvider.of<InternshipBloc>(context)
+              .add(InternshipInitialEvent());
+
+
+              });
+             
         }
         if (state is RegisterTextButtonPressedState) {
-          Navigator.of(context).pushReplacementNamed(RegisterScreen.routeName,
-          
-          
-          
+          Navigator.of(context).pushNamed(
+            RegisterScreen.routeName,
+            arguments: internshipId
           );
         }
       },
@@ -44,7 +56,6 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
             ),
             BlocBuilder<LoginBloc, LoginState>(buildWhen: (previous, current) {
-              // Return true if the current state is LoginFailState, so it rebuilds.
               return current is LoginFailState;
             }, builder: ((context, state) {
               if (state is LoginFailState) {
@@ -96,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: () {
+                      
                       context.read<LoginBloc>().add(LoginButtonPressedEvent(
                           username: emailController.text,
                           password: passwordController.text));

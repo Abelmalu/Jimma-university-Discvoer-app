@@ -10,6 +10,7 @@ import 'feature/Register/bloc/register_bloc.dart';
 import 'feature/campuses/bloc/campus_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
 import 'feature/internship/bloc/internship_bloc.dart';
+import 'feature/internship/ui/internship_detail_screen.dart';
 import 'feature/login/bloc/login_bloc.dart';
 
 
@@ -77,6 +78,7 @@ class MyApp extends StatelessWidget {
          InternshipScreen.routeName:(context) => InternshipScreen(),
          LoginScreen.routeName:(context) => LoginScreen(),
          RegisterScreen.routeName:(context) => RegisterScreen(),
+         InternshipDetailScreen.routeName:(context) => InternshipDetailScreen(),
 
 
         }

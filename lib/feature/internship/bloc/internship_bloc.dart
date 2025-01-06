@@ -14,6 +14,7 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
   InternshipBloc() : super(InternshipInitialState()) {
     on<InternshipInitialEvent>(internshipInitialEvent);
     on<InternshipNavigateToLoginEvent>(internshipNavigateToLoginEvent);
+    on<InternshipDetailInitialEvent>(internshipDetailInitialEvent);
   }
 
   FutureOr<void> internshipInitialEvent(
@@ -21,8 +22,8 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
     emit(InternshipInitialState());
 
     try {
-      final response =
-          await http.get(Uri.parse('http://localhost:8000/api/internship'));
+      final response = await http
+          .get(Uri.parse('http://localhost:8000/api/internship/data'));
 
       // print(response.body);
 
@@ -43,6 +44,25 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
 
   FutureOr<void> internshipNavigateToLoginEvent(
       InternshipNavigateToLoginEvent event, Emitter<InternshipState> emit) {
-    emit(InternshipNavigateToLoginScreenState());
+    emit(
+        InternshipNavigateToLoginScreenState(internshipId: event.internshipId));
+  }
+
+  FutureOr<void> internshipDetailInitialEvent(
+      InternshipDetailInitialEvent event, Emitter<InternshipState> emit) async {
+    print(event.internshipId);
+    final url = Uri.parse(
+        'http://localhost:8000/api/internship/data/${event.internshipId}');
+    try {
+      final response = await http.get(url);
+      final result = jsonDecode(response.body);
+      print(result);
+
+      Internship internship = Internship.fromJson(result);
+      print(internship.title);
+      emit(InternshipDetailLoadedSuccessState(internship: internship));
+    } catch (e) {
+      print('the error is during loading internship detail $e');
+    }
   }
 }
