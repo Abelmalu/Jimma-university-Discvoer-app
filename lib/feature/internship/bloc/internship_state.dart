@@ -3,6 +3,7 @@ import '../models/internship_model.dart';
 sealed class InternshipState {}
 
 final class InternshipInitialState extends InternshipState {}
+final class InternshipActionState extends InternshipState{}
 
 final class InternshipLoadingSuccessState extends InternshipState {
   final List<Internship> internships;
@@ -12,7 +13,7 @@ final class InternshipLoadingSuccessState extends InternshipState {
 
 final class InternshipLoadingFailureState extends InternshipState {}
 
-final class InternshipNavigateToLoginScreenState extends InternshipState {
+final class InternshipNavigateToLoginScreenState extends InternshipActionState {
   final int internshipId;
 
   InternshipNavigateToLoginScreenState({required this.internshipId});

@@ -4,7 +4,6 @@ import 'package:ju_discover/feature/internship/ui/internship_detail_screen.dart'
 
 import '../../Register/ui/register_screen.dart';
 import '../../internship/bloc/internship_bloc.dart';
-import '../../internship/ui/Internship_screen.dart';
 import '../bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,13 +24,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccssState) {
-          //  Navigator.pop(context);
         
           Navigator.of(context).pushNamed(InternshipDetailScreen.routeName,
-              arguments: internshipId).then((data){
+              arguments: internshipId).then((value) {
                  BlocProvider.of<InternshipBloc>(context)
-              .add(InternshipInitialEvent());
-
+                .add(InternshipInitialEvent());
 
               });
              
@@ -120,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 5,
             ),
             Container(
                 child: Center(

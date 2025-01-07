@@ -19,7 +19,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   FutureOr<void> registerInitialEvent(
       RegisterInitialEvent event, Emitter<RegisterState> emit) async {
     // emit(RegisterInitialState());
-    final url = Uri.parse('http://localhost:8000/api/programs');
+    final url = Uri.parse('http://192.168.1.5:8000/api/programs');
 
     try {
       final response = await http.get(url);
@@ -42,7 +42,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   FutureOr<void> registerButtonPressedEvent(
       RegisterButtonPressedEvent event, Emitter<RegisterState> emit) async {
-    final url = Uri.parse('http://localhost:8000/api/register');
+    final url = Uri.parse('http://192.168.1.5:8000/api/register');
 
     try {
       final response = await http.post(url, body: {
@@ -59,7 +59,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       if (result['success'] == true) {
         emit(RegisterSuccessState());
       } else {
-          final url = Uri.parse('http://localhost:8000/api/programs');
+          final url = Uri.parse('http://192.168.1.5:8000/api/programs');
 
         try {
           final response = await http.get(url);

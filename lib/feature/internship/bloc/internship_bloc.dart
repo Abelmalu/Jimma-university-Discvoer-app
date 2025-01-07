@@ -23,7 +23,7 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
 
     try {
       final response = await http
-          .get(Uri.parse('http://localhost:8000/api/internship/data'));
+          .get(Uri.parse('http://192.168.1.5:8000/api/internship/data'));
 
       // print(response.body);
 
@@ -52,7 +52,7 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
       InternshipDetailInitialEvent event, Emitter<InternshipState> emit) async {
     print(event.internshipId);
     final url = Uri.parse(
-        'http://localhost:8000/api/internship/data/${event.internshipId}');
+        'http://192.168.1.5:8000/api/internship/data/${event.internshipId}');
     try {
       final response = await http.get(url);
       final result = jsonDecode(response.body);

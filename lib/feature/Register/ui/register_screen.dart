@@ -64,13 +64,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               return Column(
                 children: [
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   Text('Register',
                       style:
                           TextStyle(fontSize: 35, fontWeight: FontWeight.w600)),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /**First Name */
@@ -89,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /**University */
@@ -108,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /**Program */
@@ -162,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /** Email */
@@ -180,7 +180,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /** password */
@@ -199,7 +199,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /** Confirm password */
@@ -214,7 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
 
                   /** Register*/
@@ -255,7 +255,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 5,
                   ),
                   Container(
                     child: Center(
@@ -289,13 +289,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             return Column(
               children: [
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Text('Register',
                     style:
                         TextStyle(fontSize: 35, fontWeight: FontWeight.w600)),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /**First Name */
@@ -311,7 +311,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /**University */
@@ -326,7 +326,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /**Program */
@@ -390,7 +390,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /** Email */
@@ -405,7 +405,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /** password */
@@ -420,7 +420,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /** Confirm password */
@@ -435,7 +435,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 /** Register*/
@@ -470,7 +470,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 5,
                 ),
                 Container(
                   child: Center(

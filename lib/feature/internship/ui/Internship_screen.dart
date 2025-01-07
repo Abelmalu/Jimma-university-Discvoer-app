@@ -22,12 +22,13 @@ class _InternshipScreenState extends State<InternshipScreen> {
     super.initState();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InternshipBloc, InternshipState>(
+      buildWhen: (previous, current) => current is ! InternshipActionState ,
       builder: (context, state) {
+
+        
         if (state is InternshipInitialState) {
           return Scaffold(
             appBar: AppBar(title: Text('internships')),
@@ -214,21 +215,21 @@ class _InternshipScreenState extends State<InternshipScreen> {
             ),
           );
         } else {
-          return Text('could not load data');
+          return CircularProgressIndicator();
         }
       },
       listener: (context, state) {
         if (state is InternshipNavigateToLoginScreenState) {
-          final navigateToLoginState = state as InternshipNavigateToLoginScreenState;
+          
+          final navigateToLoginState =
+              state as InternshipNavigateToLoginScreenState;
           final internshipId = navigateToLoginState.internshipId;
           Navigator.of(context)
-              .pushNamed(LoginScreen.routeName, arguments: internshipId).then((data){
-                 BlocProvider.of<InternshipBloc>(context)
-              .add(InternshipInitialEvent());
-
-
-              });
-         
+              .pushNamed(LoginScreen.routeName, arguments: internshipId)
+              .then((data) {
+            BlocProvider.of<InternshipBloc>(context)
+                .add(InternshipInitialEvent());
+          });
         }
       },
     );
