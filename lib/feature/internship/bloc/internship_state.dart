@@ -24,3 +24,4 @@ final class InternshipDetailLoadedSuccessState extends InternshipState {
 
   InternshipDetailLoadedSuccessState({required this.internship});
 }
+

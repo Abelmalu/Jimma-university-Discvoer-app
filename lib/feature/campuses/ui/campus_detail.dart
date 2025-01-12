@@ -24,6 +24,7 @@ class CampusDetailScreen extends StatelessWidget {
       body: ListView(
         children: [
           Card(
+             margin: EdgeInsets.zero,
             child: Container(
               // margin: EdgeInsets.only(bottom:20),
               padding: const EdgeInsets.all(17.0),

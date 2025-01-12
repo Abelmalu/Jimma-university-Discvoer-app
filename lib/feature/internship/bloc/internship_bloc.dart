@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/internship_model.dart';
 import 'internship_state.dart';
 
@@ -53,8 +53,16 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
     print(event.internshipId);
     final url = Uri.parse(
         'http://192.168.1.5:8000/api/internship/data/${event.internshipId}');
+         final prefs = await SharedPreferences.getInstance();
+    
+// Save the counter value to persistent storage under the 'counter' key.
+      final token = prefs.getString('token') ?? 0;
     try {
-      final response = await http.get(url);
+      final response = await http.get(url,
+        headers: {
+          'Authorization': 'Bearer $token', // Include the token in the header
+        },
+      );
       final result = jsonDecode(response.body);
       print(result);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ju_discover/feature/internship/ui/internship_detail_screen.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Register/ui/register_screen.dart';
 import '../../internship/bloc/internship_bloc.dart';
 import '../bloc/login_bloc.dart';
@@ -18,26 +18,24 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+   
     final internshipId = ModalRoute.of(context)!.settings.arguments as int;
     print('the arugment is $internshipId');
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccssState) {
-        
-          Navigator.of(context).pushNamed(InternshipDetailScreen.routeName,
-              arguments: internshipId).then((value) {
-                 BlocProvider.of<InternshipBloc>(context)
+          Navigator.of(context)
+              .pushNamed(InternshipDetailScreen.routeName,
+                  arguments: internshipId)
+              .then((value) {
+            BlocProvider.of<InternshipBloc>(context)
                 .add(InternshipInitialEvent());
-
-              });
-             
+          });
         }
         if (state is RegisterTextButtonPressedState) {
-          Navigator.of(context).pushNamed(
-            RegisterScreen.routeName,
-            arguments: internshipId
-          );
+          Navigator.of(context)
+              .pushNamed(RegisterScreen.routeName, arguments: internshipId);
         }
       },
       child: Scaffold(
@@ -104,7 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: () {
-                      
                       context.read<LoginBloc>().add(LoginButtonPressedEvent(
                           username: emailController.text,
                           password: passwordController.text));

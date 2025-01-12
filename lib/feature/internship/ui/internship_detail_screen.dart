@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ju_discover/feature/internship/bloc/internship_bloc.dart';
 import 'package:intl/intl.dart';
+import '../../login/bloc/login_bloc.dart';
 import '../bloc/internship_state.dart';
 
 class InternshipDetailScreen extends StatefulWidget {
@@ -28,34 +29,48 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
     addInitialEvent();
 
     print('the arugment is $internshipId');
+    final loginState = BlocProvider.of<LoginBloc>(context).state;
     return Scaffold(
-      appBar: AppBar(title: Text('Internship Detail')),
+      appBar: AppBar(
+        title: Text('Internship Detail'),
+        actions: [
+          (loginState is LoginSuccssState)
+              ? IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.logout),
+                  tooltip: 'logout',
+                )
+              : Text('login')
+        ],
+      ),
       body: SingleChildScrollView(
-        child: BlocConsumer<InternshipBloc, InternshipState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            if (state is InternshipDetailLoadedSuccessState) {
-              final successState = state as InternshipDetailLoadedSuccessState;
-              final internship = successState.internship;
+        child: Card(
+           margin: EdgeInsets.zero,
+          elevation: 7,
+          child: BlocConsumer<InternshipBloc, InternshipState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              if (state is InternshipDetailLoadedSuccessState) {
+                final successState =
+                    state as InternshipDetailLoadedSuccessState;
+                final internship = successState.internship;
 
-              return Column(
-                children: [
-                  Center(
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Text(internship.title,
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold)),
+                return Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Text(internship.title,
+                            style: TextStyle(
+                                fontSize: 37, fontWeight: FontWeight.bold)),
+                      ),
                     ),
-                  ),
-                 
-                  Card(
-                    elevation: 7,
-                    child: Container(
-                      padding:EdgeInsets.all(8),
+                    Container(
+                      padding: EdgeInsets.all(8),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Description',
@@ -66,11 +81,13 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                         ],
                       ),
                     ),
-                  ),
-                   Container(
-                   
-                    child: Card(
-                      elevation: 7,
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      width: 200,
+                      height: 100,
+                      color: Colors.grey.shade200,
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -88,28 +105,40 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                         ),
                       ),
                     ),
-                  ),
-             
-                  Card(
-                    elevation: 7,
-                    child: Padding(
+                      SizedBox(height: 8,),
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Detail',style:TextStyle(fontSize: 23,fontWeight: FontWeight.bold)),
-                          SizedBox(height: 2,),
+                          Text(
+                            'Detail',
+                            style: TextStyle(
+                                fontSize: 23, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Minimum CGPA required',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),),
+                              Text(
+                                'Minimum CGPA required',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
                               Text('${internship.minimum_cgpa}')
                             ],
                           ),
-                               Divider(),
+                          Divider(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Start Date',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),),
+                              Text(
+                                'Start Date',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
                               Text(
                                 DateFormat('d MMMM yyyy')
                                     .format(internship.start_date),
@@ -120,7 +149,8 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('End Date',
+                              Text(
+                                'End Date',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w600),
                               ),
@@ -130,11 +160,12 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                               )
                             ],
                           ),
-                               Divider(),
+                          Divider(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Status',
+                              Text(
+                                'Status',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w600),
                               ),
@@ -144,21 +175,23 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                               ),
                             ],
                           ),
-                              
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                );
+              }
+              return Column(
+                children: [],
               );
-            }
-            return Column(
-              children: [],
-            );
-          },
+            },
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Text('Apply'),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text('Apply'),
+      ),
     );
   }
 }
