@@ -93,6 +93,6 @@ class Demo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child:Text('what the fuck'));
+    return Center(child:Text('what the hell'));
   }
 }

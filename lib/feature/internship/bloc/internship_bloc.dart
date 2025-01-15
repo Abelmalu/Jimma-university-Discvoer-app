@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:ju_discover/util/app_constants.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -22,8 +23,7 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
     emit(InternshipInitialState());
 
     try {
-      final response = await http
-          .get(Uri.parse('http://192.168.1.5:8000/api/internship/data'));
+      final response = await http.get(Uri.parse('${AppContstants.baseUrl}/${AppContstants.getInternship}'));
 
       // print(response.body);
 
@@ -52,13 +52,14 @@ class InternshipBloc extends Bloc<InternshipEvent, InternshipState> {
       InternshipDetailInitialEvent event, Emitter<InternshipState> emit) async {
     print(event.internshipId);
     final url = Uri.parse(
-        'http://192.168.1.5:8000/api/internship/data/${event.internshipId}');
-         final prefs = await SharedPreferences.getInstance();
-    
+        '${AppContstants.baseUrl}/api/internship/data/${event.internshipId}');
+    final prefs = await SharedPreferences.getInstance();
+
 // Save the counter value to persistent storage under the 'counter' key.
-      final token = prefs.getString('token') ?? 0;
+    final token = prefs.getString('token') ?? 0;
     try {
-      final response = await http.get(url,
+      final response = await http.get(
+        url,
         headers: {
           'Authorization': 'Bearer $token', // Include the token in the header
         },

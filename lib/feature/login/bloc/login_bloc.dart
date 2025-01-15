@@ -7,6 +7,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../util/app_constants.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -19,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> loginButtonPressedEvent(
       LoginButtonPressedEvent event, Emitter<LoginState> emit) async {
     try {
-      final url = Uri.parse('http://192.168.1.5:8000/api/login');
+      final url = Uri.parse('${AppContstants.baseUrl}/api/login');
       final response = await http.post(url,
           body: {"email": event.username, "password": event.password});
       final result = jsonDecode(response.body);
