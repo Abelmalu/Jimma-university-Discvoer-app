@@ -28,13 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
           if (successState.selectedCategory == 'campuses') {
             Navigator.of(context).pushNamed(
               CampusScreen.routName,
-              
             );
           }
           if (successState.selectedCategory == 'Internships') {
             Navigator.of(context).pushNamed(
               InternshipScreen.routeName,
-              
             );
           }
         }
@@ -159,12 +157,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ListTile(
                       leading: CircleAvatar(
                         child: ClipOval(
-                            child: Image.asset(
-                          'assets/images/bank.jpg',
-                          fit: BoxFit.cover,
-                          width: 100,
-                          height: 100,
-                        )),
+                          child: Image.asset(
+                            'assets/images/bank.jpg',
+                            fit: BoxFit.cover,
+                            width: 100,
+                            height: 100,
+                          ),
+                        ),
                         radius: 30,
                       ),
                       title: Text('Naol chernet'),

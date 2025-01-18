@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
         ),
         
         routes:{
-          '/':(context) => Demo(),
+          '/':(context) => TabsScreen(),
          CampusScreen.routName:(context)=>CampusScreen(),
          CampusDetailScreen.routeName:(context) => CampusDetailScreen(),
          InternshipScreen.routeName:(context) => InternshipScreen(),

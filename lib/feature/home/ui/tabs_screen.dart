@@ -47,7 +47,7 @@ class _TabsScreenState extends State<TabsScreen> {
           color: Colors.white, // Optional: Ensure the text is white
         ),
       )
-    : AppBar(title: Text('not home')),
+    : AppBar(title: Text(_pages![_selectedPageIndex]['title'])),
       body: _pages![_selectedPageIndex]['page'],
       bottomNavigationBar: Container(
         child: ClipRRect(

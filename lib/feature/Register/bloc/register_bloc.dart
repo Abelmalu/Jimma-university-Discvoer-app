@@ -20,7 +20,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   FutureOr<void> registerInitialEvent(
       RegisterInitialEvent event, Emitter<RegisterState> emit) async {
     // emit(RegisterInitialState());
-    final url = Uri.parse('${AppContstants.baseUrl}/api/register');
+    final url = Uri.parse('${AppContstants.baseUrl}/api/programs');
 
     try {
       final response = await http.get(url);
@@ -37,13 +37,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           programs: programs, currentProgram: event.currentProgram));
         
     } catch (e) {
-      print('the error is loading programs $e');
+      print('the error is loading programs first $e');
     }
   }
 
   FutureOr<void> registerButtonPressedEvent(
       RegisterButtonPressedEvent event, Emitter<RegisterState> emit) async {
-    final url = Uri.parse('${AppContstants.baseUrl}/api/register');
+    final url = Uri.parse('http://192.168.1.5:8000/api/register');
 
     try {
       final response = await http.post(url, body: {
@@ -60,10 +60,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       if (result['success'] == true) {
         emit(RegisterSuccessState());
       } else {
-          final url = Uri.parse('${AppContstants.baseUrl}/api/programs');
+          
 
         try {
-          final response = await http.get(url);
+          final urlP = Uri.parse('${AppContstants.baseUrl}/api/programs');
+          final response = await http.get(urlP);
           final resultData = jsonDecode(response.body);
           List<Program> programs = [];
 
