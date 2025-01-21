@@ -26,9 +26,7 @@ class _InternshipScreenState extends State<InternshipScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocConsumer<InternshipBloc, InternshipState>(
-      
       buildWhen: (previous, current) => current is! InternshipActionState,
       builder: (context, state) {
         final loginState = BlocProvider.of<LoginBloc>(context).state;
@@ -46,12 +44,18 @@ class _InternshipScreenState extends State<InternshipScreen> {
           final successState = state as InternshipLoadingSuccessState;
           print('the data is ${successState.internships}');
           return Scaffold(
-            appBar: AppBar(title: Text('Internships'),
+            appBar: AppBar(
+              title: Text('Internships'),
               actions: [
-                (loginState is LoginSuccssState)?IconButton(onPressed: (){}, icon: Icon(Icons.logout),tooltip: 'logout',):Text('login')
+                (loginState is LoginSuccssState)
+                    ? IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.logout),
+                        tooltip: 'logout',
+                      )
+                    : Text('login')
               ],
             ),
-            
             body: ListView(
               children: [
                 Container(
@@ -225,11 +229,27 @@ class _InternshipScreenState extends State<InternshipScreen> {
             ),
           );
         } else {
-          return CircularProgressIndicator();
+          // print('the state is while backing $state');
+          return Center(child: CircularProgressIndicator());
         }
       },
       listener: (context, state) {
-                final loginState = BlocProvider.of<LoginBloc>(context).state;
+        final loginState = BlocProvider.of<LoginBloc>(context).state;
+        if (state is InternshipNavigateToLoginScreenState &&
+            loginState is LoginSuccssState) {
+          final navigateToLoginState =
+              state as InternshipNavigateToLoginScreenState;
+          final internshipId = navigateToLoginState.internshipId;
+          Navigator.of(context)
+              .pushNamed(InternshipDetailScreen.routeName,
+                  arguments: internshipId)
+              .then((data) {
+            BlocProvider.of<InternshipBloc>(context)
+                .add(InternshipInitialEvent());
+          });
+          return;
+        }
+
         if (state is InternshipNavigateToLoginScreenState) {
           final navigateToLoginState =
               state as InternshipNavigateToLoginScreenState;
@@ -240,19 +260,6 @@ class _InternshipScreenState extends State<InternshipScreen> {
             BlocProvider.of<InternshipBloc>(context)
                 .add(InternshipInitialEvent());
           });
-          
-        }
-        if (state is InternshipNavigateToLoginScreenState && loginState is LoginSuccssState) {
-          final navigateToLoginState =
-              state as InternshipNavigateToLoginScreenState;
-          final internshipId = navigateToLoginState.internshipId;
-          Navigator.of(context)
-              .pushNamed(InternshipDetailScreen.routeName, arguments: internshipId)
-              .then((data) {
-            BlocProvider.of<InternshipBloc>(context)
-                .add(InternshipInitialEvent());
-          });
-          
         }
       },
     );
