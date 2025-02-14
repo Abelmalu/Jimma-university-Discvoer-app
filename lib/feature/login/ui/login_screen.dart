@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         if (state is RegisterTextButtonPressedState) {
           Navigator.of(context)
-              .pushNamed(RegisterScreen.routeName, arguments: internshipId);
+              .pushReplacementNamed(RegisterScreen.routeName, arguments: internshipId);
         }
       },
       child: Scaffold(

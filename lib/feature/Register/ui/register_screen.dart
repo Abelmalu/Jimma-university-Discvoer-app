@@ -382,7 +382,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onChanged: (value) {},
                           items: [
                             DropdownMenuItem(
-                                child: Text('something wrong try again'))
+                                child: CircularProgressIndicator())
                           ],
                         );
                       }
