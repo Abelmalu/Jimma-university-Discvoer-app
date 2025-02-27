@@ -38,6 +38,7 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 100, 178, 241),
           title: Text('Internship Detail'),
           actions: [
             (loginState is LoginSuccssState)
@@ -51,173 +52,211 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
         ),
         body: SingleChildScrollView(
           child: BlocConsumer<InternshipBloc, InternshipState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
             builder: (context, state) {
-              print('the state at the moment is $internshipState');
               if (state is InternshipDetailLoadedSuccessState) {
                 final successState =
                     state as InternshipDetailLoadedSuccessState;
                 final internship = successState.internship;
-
-                return Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Image.asset(
-                          'assets/images/interndetail.jpg',
-                          fit: BoxFit.cover,
-                        ),
-                        Positioned(
-                          bottom: 20,
-                          left: 10,
-                          child: Column(children:[
-                            Card(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.red),
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(15),
-                                topLeft: Radius.circular(15))),
-                        padding: EdgeInsets.all(10),
-                        child: Text(internship.title,
-                            style: TextStyle(
-                                fontSize: 37, fontWeight: FontWeight.bold)),
+                return Container(
+                  color: const Color.fromARGB(255, 100, 178, 241),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                     
+                      Text(
+                        'Title',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.red),
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(15),
-                              topLeft: Radius.circular(15))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Description',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold),
-                          ),
-                          Text(internship.description),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      width: 200,
-                      height: 100,
-                      color: Colors.grey.shade200,
-                      child: Center(
+                        Text(internship.title,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                        Container( padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color.fromARGB(255, 20, 94, 221),
+                        ),child: Text(internship.qouta.toString())),
+
+                      ],),
+                      Card(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Deadline',
-                                style: TextStyle(
-                                    fontSize: 23, fontWeight: FontWeight.bold)),
-                            Text(
-                              DateFormat('d MMMM yyyy')
-                                  .format(internship.deadline),
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  // Card(
+                                  //     child: Container(
+                                  //       width: double.infinity,
+                                  //       decoration: BoxDecoration(
+                                  //           border: Border.all(color: Colors.red),
+                                  //           borderRadius: BorderRadius.only(
+                                  //               topRight: Radius.circular(15),
+                                  //               topLeft: Radius.circular(15))),
+                                  //       padding: EdgeInsets.all(10),
+                                  //       child: Text(internship.title,
+                                  //           style: TextStyle(
+                                  //               fontSize: 37,
+                                  //               fontWeight: FontWeight.bold)),
+                                  //     ),
+                                  //   ), // TITLE CARD
+
+                                  Card(
+                                    child: Container(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Description',
+                                            style: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(internship.description),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: 8,
+                                  // ),
+                                  Card(
+                                    child: Container(
+                                      width: 200,
+                                      height: 100,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text('Deadline',
+                                                style: TextStyle(
+                                                    fontSize: 23,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                              DateFormat('d MMMM yyyy')
+                                                  .format(internship.deadline),
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: 8,
+                                  // ),
+                                  Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Detail',
+                                            style: TextStyle(
+                                                fontSize: 23,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          // SizedBox(
+                                          //   height: 2,
+                                          // ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Minimum CGPA required',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text('${internship.minimum_cgpa}')
+                                            ],
+                                          ),
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Start Date',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                DateFormat('d MMMM yyyy')
+                                                    .format(
+                                                        internship.start_date),
+                                              )
+                                            ],
+                                          ),
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'End Date',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                DateFormat('d MMMM yyyy')
+                                                    .format(
+                                                        internship.end_date),
+                                              )
+                                            ],
+                                          ),
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Status',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                DateFormat('d MMMM yyyy')
+                                                    .format(
+                                                        internship.end_date),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Detail',
-                            style: TextStyle(
-                                fontSize: 23, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Minimum CGPA required',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text('${internship.minimum_cgpa}')
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Start Date',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                DateFormat('d MMMM yyyy')
-                                    .format(internship.start_date),
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'End Date',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                DateFormat('d MMMM yyyy')
-                                    .format(internship.end_date),
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Status',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                DateFormat('d MMMM yyyy')
-                                    .format(internship.end_date),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-
-                          ]),
-                        ),
-                      ],
-                    ),
-                    
-                  ],
+                    ],
+                  ),
                 );
+              } else {
+                return Center(child: CircularProgressIndicator());
               }
-              return Column(
-                children: [],
-              );
             },
+            listener: (context, state) {},
           ),
         ),
         floatingActionButton: FloatingActionButton(
