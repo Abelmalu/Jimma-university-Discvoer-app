@@ -15,7 +15,6 @@ import 'feature/internship/ui/internship_detail_screen.dart';
 import 'feature/login/bloc/login_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-
       providers: [
         BlocProvider(
           create: (context) => CampusBloc(),
@@ -43,52 +41,35 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => RegisterBloc(),
         ),
-       
       ],
-      
       child: MaterialApp(
-        title: 'Jimma University',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-      
-          
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.green,
-            
-            
-          )
-          .copyWith(
-      
-      primary:  Color.fromARGB(174, 2, 3, 1),
-      secondary: Colors.green[900], 
-        ),
-        appBarTheme: AppBarTheme(
-      backgroundColor: Color.fromARGB(174, 2, 3, 1),
-      
-      
-      foregroundColor: Colors.white,
-      
-        )
-      
-        ),
-        
-        routes:{
-          '/':(context) => TabsScreen(),
-         CampusScreen.routName:(context)=>CampusScreen(),
-         CampusDetailScreen.routeName:(context) => CampusDetailScreen(),
-         InternshipScreen.routeName:(context) => InternshipScreen(),
-         LoginScreen.routeName:(context) => LoginScreen(),
-         RegisterScreen.routeName:(context) => RegisterScreen(),
-         InternshipDetailScreen.routeName:(context) => InternshipDetailScreen(),
-
-
-        }
-      ),
+          title: 'Jimma University',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              useMaterial3: true,
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.green,
+              ).copyWith(
+                primary: Color.fromARGB(174, 2, 3, 1),
+                secondary: Colors.green[900],
+              ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: Color.fromARGB(174, 2, 3, 1),
+                foregroundColor: Colors.white,
+              )),
+          routes: {
+            '/': (context) => TabsScreen(),
+            CampusScreen.routName: (context) => CampusScreen(),
+            CampusDetailScreen.routeName: (context) => CampusDetailScreen(),
+            InternshipScreen.routeName: (context) => InternshipScreen(),
+            LoginScreen.routeName: (context) => LoginScreen(),
+            RegisterScreen.routeName: (context) => RegisterScreen(),
+            InternshipDetailScreen.routeName: (context) =>
+                InternshipDetailScreen(),
+          }),
     );
   }
 }
-
 
 // class Demo extends StatefulWidget {
 //   const Demo({super.key});
@@ -126,12 +107,11 @@ class MyApp extends StatelessWidget {
 
 //             if(_currentP != null)
 
-            
 //         Marker(
 //             markerId: MarkerId("_currentLocation"),
 //             icon: BitmapDescriptor.defaultMarker,
 //             position: _currentP!),
-      
+
 //       },
 //     );
 //   }
@@ -176,7 +156,6 @@ class MyApp extends StatelessWidget {
 //       }
 //     });
 //   }
-
 
 // }
 
@@ -233,18 +212,37 @@ class LocationDetailsScreen extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
-                           Icon(Icons.favorite_border),
+                          Icon(Icons.favorite_border),
                         ],
                       ),
-                      Row(children: [
-                        Icon(Icons.location_on,color: Colors.green,),
-                        Text('Brazil',style: TextStyle(color: Colors.green),),
-                      ],),
-                      Row(children: [
-                        Icon(Icons.star,color: Colors.yellow,),
-                        Text('5.0',style: TextStyle(color: Colors.black),),
-                        Text('143 reviews',style: TextStyle(color: Colors.grey),),
-                      ],),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.green,
+                          ),
+                          Text(
+                            'Brazil',
+                            style: TextStyle(color: Colors.green),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                          ),
+                          Text(
+                            '5.0',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          Text(
+                            '143 reviews',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 8),
                       Text(
                         'Rio de Janeiro, often simply called Rio, is one of Brazil\'s most iconic cities, renowned for...',
@@ -267,12 +265,16 @@ class LocationDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-         Positioned(
+        Positioned(
           top: 40,
           left: 16,
           child: InkWell(
-            onTap: (){},
-            child: Icon(Icons.arrow_back,color: Colors.white,size: 30,),
+            onTap: () {},
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
         ),
       ],

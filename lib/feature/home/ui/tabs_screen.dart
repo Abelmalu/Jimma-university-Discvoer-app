@@ -33,35 +33,36 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-      appBar:  (_pages![_selectedPageIndex]['page'].runtimeType == HomeScreen)
-    ? AppBar(
-        title: const Text(
-          'JImma University',
-        ),
-        centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 32, // Increase font size
-          // Optional: Adjust font weight
-          color: Colors.white, // Optional: Ensure the text is white
-        ),
-      )
-    : AppBar(title: Text(_pages![_selectedPageIndex]['title'])),
+      appBar: (_pages![_selectedPageIndex]['page'].runtimeType == HomeScreen)
+          ? AppBar(
+              title: const Text(
+                'JImma University',
+              ),
+              centerTitle: true,
+              titleTextStyle: TextStyle(
+                fontSize: 32, // Increase font size
+                // Optional: Adjust font weight
+                color: Colors.white, // Optional: Ensure the text is white
+              ),
+            )
+          : AppBar(title: Text(_pages![_selectedPageIndex]['title'])),
       body: _pages![_selectedPageIndex]['page'],
       bottomNavigationBar: Container(
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(30)),
           child: BottomNavigationBar(
+            selectedItemColor: Colors.black,
             backgroundColor: Theme.of(context).primaryColor,
             unselectedItemColor: Colors.white,
+            currentIndex: _selectedPageIndex,
             onTap: _selectPage,
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.history), label: 'history'),
+                  icon: Icon(Icons.history_edu), label: 'history'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.contact_page), label: 'ContactUs'),
+                  icon: Icon(Icons.contact_mail), label: 'ContactUs'),
             ],
           ),
         ),

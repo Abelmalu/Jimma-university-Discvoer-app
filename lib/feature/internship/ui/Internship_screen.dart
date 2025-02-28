@@ -24,6 +24,14 @@ class _InternshipScreenState extends State<InternshipScreen> {
     super.initState();
   }
 
+  String _truncateDescription(String text, int wordLimit) {
+    final words = text.split(' ');
+    if (words.length <= wordLimit) {
+      return text; // If the description is short enough, show it all
+    }
+    return words.take(wordLimit).join(' ') + '...';
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InternshipBloc, InternshipState>(
@@ -104,7 +112,7 @@ class _InternshipScreenState extends State<InternshipScreen> {
                           children: [
                             Card(
                               elevation: 5,
-                              color: Colors.white,
+                              // color: Colors.white,
                               child: Container(
                                 width: 150,
                                 height: 100,
@@ -210,7 +218,11 @@ class _InternshipScreenState extends State<InternshipScreen> {
                           radius: 30,
                         ),
                         title: Text('${internship.title}'),
-                        subtitle: Text('${internship.description}'),
+                        subtitle: Text(
+                          _truncateDescription(internship.description,
+                              10), // Show first 20 words
+                          style: TextStyle(fontSize: 16),
+                        ),
                         trailing: InkWell(
                           onTap: () {
                             context.read<InternshipBloc>().add(

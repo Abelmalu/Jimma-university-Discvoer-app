@@ -24,7 +24,7 @@ class CampusDetailScreen extends StatelessWidget {
       body: ListView(
         children: [
           Card(
-             margin: EdgeInsets.zero,
+            margin: EdgeInsets.zero,
             child: Container(
               // margin: EdgeInsets.only(bottom:20),
               padding: const EdgeInsets.all(17.0),
@@ -63,28 +63,41 @@ class CampusDetailScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                       SizedBox(width: 10),
+                      SizedBox(width: 10),
                       Column(
-                        children: [Text('Students',style: TextStyle(fontSize:18,fontWeight: FontWeight.w400),), Text('1500',
+                        children: [
+                          Text(
+                            'Students',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w400),
-                          )],
+                          ),
+                          Text(
+                            '1500',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w400),
+                          )
+                        ],
                       ),
                       SizedBox(
                         width: 20,
                       ),
                       Column(
-                        children: [Text('Staffs',
+                        children: [
+                          Text(
+                            'Staffs',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w400),
-                          ), Text('400',
+                          ),
+                          Text(
+                            '400',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w400),
-                          )],
+                          )
+                        ],
                       ),
                     ],
                   ),
-                  SizedBox(height:30),
+                  SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -109,7 +122,7 @@ class CampusDetailScreen extends StatelessWidget {
                         height: 100,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                         color: Color.fromARGB(255, 151, 240, 166),
+                          color: Color.fromARGB(255, 151, 240, 166),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
@@ -144,7 +157,6 @@ class CampusDetailScreen extends StatelessWidget {
             ),
           ),
           Card(
-             color: Colors.white,
             elevation: 8,
             child: ExpansionTile(
               title: Text('History'),
@@ -156,9 +168,7 @@ class CampusDetailScreen extends StatelessWidget {
               ],
             ),
           ),
-          
           Card(
-           color: Colors.white,
             elevation: 8,
             child: ExpansionTile(
               title: Text('Mission and vision'),
@@ -170,9 +180,7 @@ class CampusDetailScreen extends StatelessWidget {
               ],
             ),
           ),
-          
           Card(
-           color: Colors.white,
             elevation: 8,
             child: ExpansionTile(
               title: Text('Academics'),
@@ -184,9 +192,7 @@ class CampusDetailScreen extends StatelessWidget {
               ],
             ),
           ),
-       
           Card(
-            color: Colors.white,
             elevation: 8,
             child: ExpansionTile(
               title: Text('Libraries'),
@@ -198,7 +204,6 @@ class CampusDetailScreen extends StatelessWidget {
               ],
             ),
           ),
-         
         ],
       ),
     );

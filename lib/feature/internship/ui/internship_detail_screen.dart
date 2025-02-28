@@ -38,7 +38,7 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 100, 178, 241),
+          backgroundColor: const Color.fromARGB(255, 165, 209, 245),
           title: Text('Internship Detail'),
           actions: [
             (loginState is LoginSuccssState)
@@ -58,53 +58,50 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                     state as InternshipDetailLoadedSuccessState;
                 final internship = successState.internship;
                 return Container(
-                  color: const Color.fromARGB(255, 100, 178, 241),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                     
-                      Text(
-                        'Title',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Text(internship.title,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
-                        Container( padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color.fromARGB(255, 20, 94, 221),
-                        ),child: Text(internship.qouta.toString())),
-
-                      ],),
-                      Card(
-                        child: Column(
+                  color: const Color.fromARGB(255, 165, 209, 245),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            Text("Title",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 30)),
                             Container(
-                              padding: EdgeInsets.all(5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  // Card(
-                                  //     child: Container(
-                                  //       width: double.infinity,
-                                  //       decoration: BoxDecoration(
-                                  //           border: Border.all(color: Colors.red),
-                                  //           borderRadius: BorderRadius.only(
-                                  //               topRight: Radius.circular(15),
-                                  //               topLeft: Radius.circular(15))),
-                                  //       padding: EdgeInsets.all(10),
-                                  //       child: Text(internship.title,
-                                  //           style: TextStyle(
-                                  //               fontSize: 37,
-                                  //               fontWeight: FontWeight.bold)),
-                                  //     ),
-                                  //   ), // TITLE CARD
-
-                                  Card(
-                                    child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 2, horizontal: 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: const Color.fromARGB(255, 221, 174, 20),
+                              ),
+                              child: Text(internship.title,
+                                  style: TextStyle(fontSize: 25)),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Card(
+                          margin: EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -119,12 +116,11 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                                         ],
                                       ),
                                     ),
-                                  ),
-                                  // SizedBox(
-                                  //   height: 8,
-                                  // ),
-                                  Card(
-                                    child: Container(
+                                    // SizedBox(
+                                    //   height: 8,
+                                    // ),
+                                    Divider(),
+                                    Container(
                                       width: 200,
                                       height: 100,
                                       child: Center(
@@ -141,19 +137,20 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                                               DateFormat('d MMMM yyyy')
                                                   .format(internship.deadline),
                                               style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.bold),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.redAccent,
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  // SizedBox(
-                                  //   height: 8,
-                                  // ),
-                                  Card(
-                                    child: Padding(
+                                    // SizedBox(
+                                    //   height: 8,
+                                    // ),
+                                    Divider(),
+                                    Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         crossAxisAlignment:
@@ -220,6 +217,24 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                                               )
                                             ],
                                           ),
+
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Quota',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                internship.qouta.toString(),
+                                              ),
+                                            ],
+                                          ),
                                           Divider(),
                                           Row(
                                             mainAxisAlignment:
@@ -232,24 +247,71 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                              Text(
-                                                DateFormat('d MMMM yyyy')
-                                                    .format(
-                                                        internship.end_date),
+                                              Container(
+                                                padding: EdgeInsets.all(5),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  color: Colors.yellow,
+                                                ),
+                                                child: Text(
+                                                  internship.status == 1
+                                                      ? 'Accepting Applicants'
+                                                      : internship.status == 2
+                                                          ? 'Closed'
+                                                          : internship.status ==
+                                                                  3
+                                                              ? 'Started'
+                                                              : 'Unknown Status',
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      height: 22,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                width: 200,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            'Application Submitted Successfully!'),
+                                      ),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors
+                                        .green, // Set the background color
+                                    foregroundColor:
+                                        Colors.white, // Set the text color
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 12),
+                                  ),
+                                  child: Text(
+                                    'Apply ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               } else {
@@ -258,10 +320,6 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
             },
             listener: (context, state) {},
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Text('Apply'),
         ),
       ),
     );

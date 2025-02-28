@@ -105,13 +105,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Card(
-                color: Colors.white,
                 elevation: 8,
                 child: Column(
                   children: [
                     Text('What is happening ?',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold)),
+                            fontSize: 17, fontWeight: FontWeight.bold)),
                     ListTile(
                       leading: CircleAvatar(
                         child: ClipOval(

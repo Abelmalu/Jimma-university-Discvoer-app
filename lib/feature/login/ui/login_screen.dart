@@ -35,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
           // });
         }
         if (state is RegisterTextButtonPressedState) {
-          Navigator.of(context)
-              .pushReplacementNamed(RegisterScreen.routeName, arguments: internshipId);
+          Navigator.of(context).pushReplacementNamed(RegisterScreen.routeName,
+              arguments: internshipId);
         }
       },
       child: Scaffold(
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 62),
-                    child: Text('did not have an acount? '),
+                    child: Text('Does not have an acount? '),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 1.0),
