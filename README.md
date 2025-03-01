@@ -1,4 +1,4 @@
-# Jimma univ Application
+# Jimma University Application
 
 
 
@@ -41,6 +41,11 @@ flutter pub get
 
 
 # Sample photos
+![Image](https://github.com/user-attachments/assets/a4e0c99b-ee54-4d87-b0dc-3f9479458fec)
+
+![Image](https://github.com/user-attachments/assets/72442935-f7f4-444e-ad1c-d2dde410f562)
+
+![Image](https://github.com/user-attachments/assets/650e940d-5fa2-4381-a246-dd898ebc0082)
 
 
 
