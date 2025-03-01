@@ -25,7 +25,8 @@ if (flutterVersionName == null) {
 android {
     namespace "com.example.ju_discover"
     compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+     ndkVersion flutter.ndkVersion
+    
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -69,5 +70,6 @@ flutter {
 }
 
 dependencies {
+    
     
 }

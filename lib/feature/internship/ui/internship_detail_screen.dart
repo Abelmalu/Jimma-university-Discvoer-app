@@ -298,7 +298,7 @@ class _InternshipDetailScreenState extends State<InternshipDetailScreen> {
                                         horizontal: 20, vertical: 12),
                                   ),
                                   child: Text(
-                                    'Apply ',
+                                    'Pay Application Fee ',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
