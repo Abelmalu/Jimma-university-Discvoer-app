@@ -7,8 +7,8 @@
 
 
 # Tech stack 
-  -FrontEnd........Flutter
-  -BackEnd.........Laravel
+  - FrontEnd........Flutter
+  - BackEnd.........Laravel
 
 # Getting Started
 ## Required 
